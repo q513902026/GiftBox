@@ -1,0 +1,16 @@
+﻿gifBox:
+  gifBoxData:{}
+  gifBoxDrop:{}
+  commandSetting: 
+    usage: /<GifBox|gf> <子命令>
+    description: 使用此命令来操作礼物盒子插件
+    help:
+      usage: /<GifBox|gf> <help> [GifBox命令]
+      description: 使用此命令来显示礼物盒子插件帮助信息
+      permission: customEntitykDrop.help
+      permission-message: 你没有权限使用礼物盒子插件帮助命令
+    reload: 
+      usage: /<GifBox|gf> <reload>
+      description: 使用此命令来重新加载配置文件
+      permission: customEntitykDrop.reload
+      permission-message: 你没有权限重新加载配置文件
