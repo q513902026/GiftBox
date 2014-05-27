@@ -31,7 +31,7 @@ public class GifBox extends JavaPlugin
         random = new Random();
         config = this.getConfig();
         setting = new GifBoxSetting(config);
-        mainCommand = this.getCommand("CustomEntityDrop");
+        mainCommand = this.getCommand("GifBox");
         commandReceiver = new CommandReceiver();
         
         mainCommand.setDescription(setting.getMainCommandDescription());
