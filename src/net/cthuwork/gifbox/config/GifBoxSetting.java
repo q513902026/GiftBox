@@ -11,11 +11,11 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 
-import net.cthuwork.core.DropData;
-import net.cthuwork.core.dropdata.ExpDropData;
-import net.cthuwork.core.dropdata.ItemStackDropData;
 import net.cthuwork.gifbox.GifBox;
 import net.cthuwork.gifbox.config.PluginSetting;
+import net.cthuwork.gifbox.core.DropData;
+import net.cthuwork.gifbox.core.dropdata.ExpDropData;
+import net.cthuwork.gifbox.core.dropdata.ItemStackDropData;
 
 public class GifBoxSetting extends PluginSetting
 {
@@ -23,13 +23,17 @@ public class GifBoxSetting extends PluginSetting
     public ConfigurationSection gifBoxData;
     public ConfigurationSection gifBox;
     
+    public boolean customDropSystem = false;
+    
     public GifBoxSetting(FileConfiguration config)
     {
         super(config);
+        customDropSystem = config.getBoolean("isCustomEntityDrop");
         gifBoxData = config.getConfigurationSection("gifBox.gifBoxData");
         gifBox = config.getConfigurationSection("gifBox.gifBox");
         commandSetting = config.getConfigurationSection("gifBox.commandSetting");
     }
+    
     @SuppressWarnings("unused")
     public List<DropData> getRandomDropFromItemStack(ItemStack itemstack)
     {
@@ -243,6 +247,7 @@ public class GifBoxSetting extends PluginSetting
         }
         return false;
     }
+    
     @Override
     public void save()
     {

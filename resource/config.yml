@@ -1,16 +1,45 @@
 ﻿gifBox:
-  gifBoxData:{}
-  gifBox:{}
+  gifBoxData:
+    TEST:
+      dropGroups:
+        - drops:
+          - item:
+              ==: org.bukkit.inventory.ItemStack
+              type: WOOOD_AXE
+              damage: 0 
+              amount: 1
+            percent: 100
+          probability: 1
+  gifBox:
+    GOLD_BLOCK:
+      item:
+        ==: org.bukkit.inventory.ItemStack
+        type: GOLD_BLOCK
+        damage: 0 
+        amout: 1
+#        meta:
+#          ==: ItemMeta
+#          meta-type: UNSPECIFIC
+#          display-name: 不知名的宝箱 
+#          lore:
+#            - "制作者:HopeAsd"
+      dropGroups:
+        - itemKey: TEST
+          percent:100
+        probability:1
   commandSetting: 
     usage: /<GifBox|gf> <子命令>
     description: 使用此命令来操作礼物盒子插件
     help:
       usage: /<GifBox|gf> <help> [GifBox命令]
       description: 使用此命令来显示礼物盒子插件帮助信息
-      permission: customEntitykDrop.help
+      permission: gifBox.help
       permission-message: 你没有权限使用礼物盒子插件帮助命令
     reload: 
       usage: /<GifBox|gf> <reload>
       description: 使用此命令来重新加载配置文件
-      permission: customEntitykDrop.reload
+      permission: gifBox.reload
       permission-message: 你没有权限重新加载配置文件
+isCustomEntityDrop: false
+customEntityDrop:
+  customDropSetting: {}

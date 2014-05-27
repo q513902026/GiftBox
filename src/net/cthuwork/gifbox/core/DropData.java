@@ -1,4 +1,4 @@
-package net.cthuwork.core;
+package net.cthuwork.gifbox.core;
 
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;

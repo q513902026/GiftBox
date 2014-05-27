@@ -25,10 +25,8 @@ public class ReloadCommand extends BaseCommand
 		}
 		GifBox.instance.reloadConfig();
 
-		GifBox.instance.config = GifBox.instance
-				.getConfig();
-		GifBox.instance.setting = new GifBoxSetting(
-		        GifBox.instance.config);
+		GifBox.instance.config = GifBox.instance.getConfig();
+		GifBox.instance.setting = new GifBoxSetting(GifBox.instance.config);
 		sender.sendMessage("§a[GifBox]§f配置文件已重新加轄!");
 	}
 

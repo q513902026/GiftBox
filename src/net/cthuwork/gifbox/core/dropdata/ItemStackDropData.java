@@ -1,6 +1,6 @@
-package net.cthuwork.core.dropdata;
+package net.cthuwork.gifbox.core.dropdata;
 
-import net.cthuwork.core.DropData;
+import net.cthuwork.gifbox.core.DropData;
 
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
