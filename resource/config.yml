@@ -1,6 +1,6 @@
 ﻿gifBox:
   gifBoxData:{}
-  gifBoxDrop:{}
+  gifBox:{}
   commandSetting: 
     usage: /<GifBox|gf> <子命令>
     description: 使用此命令来操作礼物盒子插件
