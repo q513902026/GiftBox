@@ -30,12 +30,12 @@ public class GiftBox extends JavaPlugin
         this.saveDefaultConfig();
         
         random = new Random();
-        
         config = this.getConfig();
         setting = new GiftBoxSetting(config);
         playListener = new PlayerListener();
         mainCommand = this.getCommand("GiftBox");
         commandReceiver = new CommandReceiver();
+        
         mainCommand.setDescription(setting.getMainCommandDescription());
         mainCommand.setExecutor(commandReceiver);
         mainCommand.setUsage(setting.getMainCommandUsage());

@@ -1,4 +1,32 @@
 ﻿giftBox: 
+  dataSetting: 
+    TEST: 
+      dropGroups: 
+        - drops: 
+          - item: 
+              ==: org.bukkit.inventory.ItemStack
+              type: WOOOD_AXE
+              damage: 0 
+              amount: 1
+            percent: 100
+        probability: 1
+  chestSetting: 
+    GOLD_BLOCK: 
+      item: 
+        ==: org.bukkit.inventory.ItemStack
+        type: GOLD_BLOCK
+        damage: 0 
+        amout: 1
+        meta: 
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: 不知名的宝箱 
+          lore: 
+            - "测试"
+      dropGroups: 
+        - itemKey: TEST
+          percent: 100
+        probability: 1
   commandSetting: 
     usage: /<GiftBox|gb> <子命令>
     description: 使用此命令来操作礼物盒子插件
@@ -12,31 +40,3 @@
       description: 使用此命令来重新加载配置文件
       permission: giftBox.reload
       permission-message: 你没有权限重新加载配置文件
-  giftBoxData: 
-    TEST: 
-      dropGroups: 
-        - drops: 
-          - item: 
-              ==: org.bukkit.inventory.ItemStack
-              type: WOOOD_AXE
-              damage: 0 
-              amount: 1
-            percent: 100
-          probability: 1
-  giftBox: 
-    GOLD_BLOCK: 
-      item: 
-        ==: org.bukkit.inventory.ItemStack
-        type: GOLD_BLOCK
-        damage: 0 
-        amout: 1
-        meta: 
-          ==: ItemMeta
-          meta-type: UNSPECIFIC
-          display-name: 不知名的宝箱 
-          lore: 
-            - "制作者:HopeAsd"
-      dropGroups: 
-        - itemKey: TEST
-          percent: 100
-        probability: 1

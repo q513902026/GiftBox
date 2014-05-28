@@ -1,4 +1,4 @@
-﻿package net.cthuwork.giftbox.config;
+package net.cthuwork.giftbox.config;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,14 +20,14 @@ import net.cthuwork.giftbox.core.dropdata.ItemStackDropData;
 public class GiftBoxSetting extends PluginSetting
 {
     public ConfigurationSection commandSetting;
-    public ConfigurationSection giftBoxData;
-    public ConfigurationSection giftBox;
+    public ConfigurationSection giftBoxDataSetting;
+    public ConfigurationSection giftBoxChestSetting;
     
     public GiftBoxSetting(FileConfiguration config)
     {
         super(config);
-        giftBoxData = config.getConfigurationSection("giftBox.giftBoxData");
-        giftBox = config.getConfigurationSection("giftBox.giftBox");
+        giftBoxDataSetting = config.getConfigurationSection("giftBox.dataSetting");
+        giftBoxChestSetting = config.getConfigurationSection("giftBox.chestSetting");
         commandSetting = config.getConfigurationSection("giftBox.commandSetting");
     }
     
@@ -35,13 +35,13 @@ public class GiftBoxSetting extends PluginSetting
     public List<DropData> getRandomDropFromItemStack(ItemStack itemstack)
     {
         ConfigurationSection boxSetting = null;
-        if (!(giftBox.isConfigurationSection(itemstack.getType().toString())))
+        if (!(giftBoxChestSetting.isConfigurationSection(itemstack.getType().toString())))
         {
             return null;
         }
         else
         {
-            boxSetting = giftBox.getConfigurationSection(itemstack.getType().toString());
+            boxSetting = giftBoxChestSetting.getConfigurationSection(itemstack.getType().toString());
         }
         if (!boxSetting.isList("dropGroup"))
         {
@@ -137,11 +137,11 @@ public class GiftBoxSetting extends PluginSetting
     public List<DropData> getGifBoxData(String itemKey)
     {
         ConfigurationSection boxDataSetting = null;
-        if (!(giftBoxData.isConfigurationSection(itemKey)))
+        if (!(giftBoxDataSetting.isConfigurationSection(itemKey)))
         {
             return null;
         }
-        boxDataSetting = giftBoxData.getConfigurationSection(itemKey);
+        boxDataSetting = giftBoxDataSetting.getConfigurationSection(itemKey);
         if (!boxDataSetting.isList("dropGroup"))
         {
             return null;
@@ -232,9 +232,9 @@ public class GiftBoxSetting extends PluginSetting
     public boolean isGifBox(ItemStack itemstack)
     {
         ConfigurationSection boxSetting = null;
-        if (giftBox.isConfigurationSection(itemstack.getType().toString()))
+        if (giftBoxChestSetting.isConfigurationSection(itemstack.getType().toString()))
         {
-            boxSetting = giftBox.getConfigurationSection(itemstack.getType().toString());
+            boxSetting = giftBoxChestSetting.getConfigurationSection(itemstack.getType().toString());
             Object itemObj = boxSetting.get("item");
             if (itemObj instanceof ItemStack)
             {
@@ -250,21 +250,22 @@ public class GiftBoxSetting extends PluginSetting
     {
         GiftBox.instance.saveConfig();
     }
+    
     public String getMainCommandUsage()
     {
-        return commandSetting.getString("usage", "/<GiftBox|gb> [子命令]");
+        return commandSetting.getString("usage", "/<GiftBox|GF> [子命令]");
     }
     public String getMainCommandDescription()
     {
-        return commandSetting.getString("description", "使用此命令来操作礼物盒子插件");
+        return commandSetting.getString("description", "使用此命令来操作自定义掉落插件");
     }
     public String getCommandUsage(String commandName)
     {
-        return commandSetting.getString(commandName + ".usage", "/<GiftBox|gb> <" + commandName + "> [参数[ ...]]");
+        return commandSetting.getString(commandName + ".usage", "/<GiftBox|GF> <" + commandName + "> [参数[ ...]]");
     }
     public String getCommandDescription(String commandName)
     {
-        return commandSetting.getString(commandName + ".description", "礼物盒子" + commandName + "指令");
+        return commandSetting.getString(commandName + ".description", "GiftBox插件" + commandName + "指令");
     }
     public String getCommandPermission(String commandName)
     {
