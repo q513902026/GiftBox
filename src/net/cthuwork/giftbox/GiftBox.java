@@ -8,8 +8,10 @@ import net.cthuwork.giftbox.command.ReloadCommand;
 import net.cthuwork.giftbox.config.GiftBoxSetting;
 import net.cthuwork.giftbox.listener.PlayerListener;
 
+import org.bukkit.Material;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class GiftBox extends JavaPlugin
@@ -33,9 +35,9 @@ public class GiftBox extends JavaPlugin
         config = this.getConfig();
         setting = new GiftBoxSetting(config);
         playListener = new PlayerListener();
+        
         mainCommand = this.getCommand("GiftBox");
         commandReceiver = new CommandReceiver();
-        
         mainCommand.setDescription(setting.getMainCommandDescription());
         mainCommand.setExecutor(commandReceiver);
         mainCommand.setUsage(setting.getMainCommandUsage());
@@ -43,7 +45,7 @@ public class GiftBox extends JavaPlugin
         commandReceiver.registerCommand(new HelpCommand());
         commandReceiver.registerCommand(new ReloadCommand());
         
-        this.getServer().getPluginManager().registerEvents(playListener, this);     
+        this.getServer().getPluginManager().registerEvents(playListener, this);
     }
     @Override
     public void onDisable()

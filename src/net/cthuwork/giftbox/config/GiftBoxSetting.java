@@ -22,15 +22,16 @@ public class GiftBoxSetting extends PluginSetting
     public ConfigurationSection commandSetting;
     public ConfigurationSection giftBoxDataSetting;
     public ConfigurationSection giftBoxChestSetting;
+    public ConfigurationSection giftBoxChestDataSetting;
     
     public GiftBoxSetting(FileConfiguration config)
     {
         super(config);
         giftBoxDataSetting = config.getConfigurationSection("giftBox.dataSetting");
         giftBoxChestSetting = config.getConfigurationSection("giftBox.chestSetting");
+        giftBoxChestDataSetting = config.getConfigurationSection("gifBox.chestDataSetting");
         commandSetting = config.getConfigurationSection("giftBox.commandSetting");
     }
-    
     @SuppressWarnings("unused")
     public List<DropData> getRandomDropFromItemStack(ItemStack itemstack)
     {
@@ -47,7 +48,7 @@ public class GiftBoxSetting extends PluginSetting
         {
             return null;
         }
-        List<?> dropGroupsSettingList = boxSetting.getList("dropGroups");
+        List<?> dropGroupsSettingList = boxSetting.getList("dropGroup");
         int sumProbability = 0;
         Map<ArrayList<?>, Integer> dropGroupsMap = new HashMap<ArrayList<?>, Integer>();
         for (Object object : dropGroupsSettingList)
@@ -146,7 +147,7 @@ public class GiftBoxSetting extends PluginSetting
         {
             return null;
         }
-        List<?> dropGroupsSettingList = boxDataSetting.getList("dropGroups");
+        List<?> dropGroupsSettingList = boxDataSetting.getList("dropGroup");
         int sumProbability = 0;
         Map<ArrayList<?>, Integer> dropGroupsMap = new HashMap<ArrayList<?>, Integer>();
         for (Object object : dropGroupsSettingList)
@@ -235,22 +236,47 @@ public class GiftBoxSetting extends PluginSetting
         if (giftBoxChestSetting.isConfigurationSection(itemstack.getType().toString()))
         {
             boxSetting = giftBoxChestSetting.getConfigurationSection(itemstack.getType().toString());
-            Object itemObj = boxSetting.get("item");
-            if (itemObj instanceof ItemStack)
+            Object chestKeyObj = boxSetting.get("chestKey");
+            if (chestKeyObj instanceof String)
             {
-                ItemStack item = (ItemStack) itemObj;
-                return item.equals(itemstack);
+                String chestKey = (String) chestKeyObj;
+                ItemStack item = getItemStackFromChestKey(chestKey);
+                if (item != null)
+                {
+                    return itemstack.equals(item);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
             }
         }
         return false;
     }
-    
+    private ItemStack getItemStackFromChestKey(String key)
+    {
+        ConfigurationSection chestKeySetting = null;
+        if (!(giftBoxChestDataSetting.isConfigurationSection(key)))
+        {
+            return null;
+        }
+        chestKeySetting = giftBoxChestDataSetting.getConfigurationSection(key);
+        Object itemObj = chestKeySetting.get("item");
+        if (!(itemObj instanceof ItemStack))
+        {
+            return null;
+        }
+        return (ItemStack) itemObj;
+    }
     @Override
     public void save()
     {
         GiftBox.instance.saveConfig();
     }
-    
     public String getMainCommandUsage()
     {
         return commandSetting.getString("usage", "/<GiftBox|GF> [子命令]");

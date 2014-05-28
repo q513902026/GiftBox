@@ -1,42 +1,40 @@
-ï»¿giftBox: 
-  dataSetting: 
-    TEST: 
-      dropGroups: 
-        - drops: 
-          - item: 
-              ==: org.bukkit.inventory.ItemStack
-              type: WOOOD_AXE
-              damage: 0 
-              amount: 1
-            percent: 100
-        probability: 1
+giftBox: 
   chestSetting: 
-    GOLD_BLOCK: 
-      item: 
-        ==: org.bukkit.inventory.ItemStack
-        type: GOLD_BLOCK
-        damage: 0 
-        amout: 1
-        meta: 
-          ==: ItemMeta
-          meta-type: UNSPECIFIC
-          display-name: ä¸çŸ¥åçš„å®ç®± 
-          lore: 
-            - "æµ‹è¯•"
-      dropGroups: 
+    IRON_BLOCK: 
+      chestKey: TEST
+      dropGroup: 
+      - drops:
         - itemKey: TEST
           percent: 100
         probability: 1
+  chestDataSetting:
+    TEST:
+      item:
+        ==: org.bukkit.inventory.ItemStack
+        type: IRON_BLOCK
+        damage: 0
+        amount: 1
+  dataSetting: 
+    TEST: 
+      dropGroup: 
+      - drops: 
+        - item: 
+            ==: org.bukkit.inventory.ItemStack
+            type: WOOD_AXE
+            damage: 0
+            amount: 1
+          percent: 100
+        probability: 1
   commandSetting: 
-    usage: /<GiftBox|gb> <å­å‘½ä»¤>
-    description: ä½¿ç”¨æ­¤å‘½ä»¤æ¥æ“ä½œç¤¼ç‰©ç›’å­æ’ä»¶
+    usage: /<GiftBox|gb> <×ÓÃüÁî>
+    description: Ê¹ÓÃ´ËÃüÁîÀ´²Ù×÷ÀñÎïºĞ×Ó²å¼ş
     help: 
-      usage: /<GiftBox|gb> <help> [GifBoxå‘½ä»¤]
-      description: ä½¿ç”¨æ­¤å‘½ä»¤æ¥æ˜¾ç¤ºç¤¼ç‰©ç›’å­æ’ä»¶å¸®åŠ©ä¿¡æ¯
+      usage: /<GiftBox|gb> <help> [GifBoxÃüÁî]
+      description: Ê¹ÓÃ´ËÃüÁîÀ´ÏÔÊ¾ÀñÎïºĞ×Ó²å¼ş°ïÖúĞÅÏ¢
       permission: giftBox.help
-      permission-message: ä½ æ²¡æœ‰æƒé™ä½¿ç”¨ç¤¼ç‰©ç›’å­æ’ä»¶å¸®åŠ©å‘½ä»¤
+      permission-message: ÄãÃ»ÓĞÈ¨ÏŞÊ¹ÓÃÀñÎïºĞ×Ó²å¼ş°ïÖúÃüÁî
     reload: 
       usage: /<GiftBox|gb> <reload>
-      description: ä½¿ç”¨æ­¤å‘½ä»¤æ¥é‡æ–°åŠ è½½é…ç½®æ–‡ä»¶
+      description: Ê¹ÓÃ´ËÃüÁîÀ´ÖØĞÂ¼ÓÔØÅäÖÃÎÄ¼ş
       permission: giftBox.reload
-      permission-message: ä½ æ²¡æœ‰æƒé™é‡æ–°åŠ è½½é…ç½®æ–‡ä»¶
+      permission-message: ÄãÃ»ÓĞÈ¨ÏŞÖØĞÂ¼ÓÔØÅäÖÃÎÄ¼ş
