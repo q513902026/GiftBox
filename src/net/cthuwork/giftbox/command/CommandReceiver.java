@@ -1,4 +1,4 @@
-package net.cthuwork.gifbox.command;
+﻿package net.cthuwork.giftbox.command;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
-package net.cthuwork.gifbox.core.dropdata;
+﻿package net.cthuwork.giftbox.core.dropdata;
 
-import net.cthuwork.gifbox.core.DropData;
-import net.cthuwork.gifbox.core.DropData.DropType;
+import net.cthuwork.giftbox.core.DropData;
+import net.cthuwork.giftbox.core.DropData.DropType;
 
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.ExperienceOrb;

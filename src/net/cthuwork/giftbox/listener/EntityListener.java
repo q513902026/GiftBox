@@ -1,4 +1,4 @@
-package net.cthuwork.gifbox.listener;
+package net.cthuwork.giftbox.listener;
 
 import org.bukkit.event.Listener;
 

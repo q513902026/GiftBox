@@ -1,4 +1,4 @@
-package net.cthuwork.gifbox.config;
+﻿package net.cthuwork.giftbox.config;
 
 import org.bukkit.configuration.file.FileConfiguration;
 

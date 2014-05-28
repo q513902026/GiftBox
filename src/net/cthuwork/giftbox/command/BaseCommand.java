@@ -1,9 +1,9 @@
-package net.cthuwork.gifbox.command;
+﻿package net.cthuwork.giftbox.command;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import net.cthuwork.gifbox.GifBox;
+import net.cthuwork.giftbox.GiftBox;
 
 import org.bukkit.command.CommandSender;
 
@@ -27,19 +27,19 @@ public abstract class BaseCommand
     
     public String getDescription()
     {
-        return GifBox.instance.setting.getCommandDescription(this.commandName);
+        return GiftBox.instance.setting.getCommandDescription(this.commandName);
     }
     public String getUsage()
     {
-        return GifBox.instance.setting.getCommandUsage(this.commandName);
+        return GiftBox.instance.setting.getCommandUsage(this.commandName);
     }
     public String getPermission()
     {
-        return GifBox.instance.setting.getCommandPermission(this.commandName);
+        return GiftBox.instance.setting.getCommandPermission(this.commandName);
     }
     public String getPermissionMessage()
     {
-        return GifBox.instance.setting.getCommandPermissionMessage(this.commandName);
+        return GiftBox.instance.setting.getCommandPermissionMessage(this.commandName);
     }
     
     public void PrintDescription(CommandSender sender)

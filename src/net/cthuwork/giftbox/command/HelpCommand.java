@@ -1,11 +1,11 @@
-package net.cthuwork.gifbox.command;
+﻿package net.cthuwork.giftbox.command;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.cthuwork.gifbox.GifBox;
+import net.cthuwork.giftbox.GiftBox;
 
 import org.bukkit.command.CommandSender;
 
@@ -21,7 +21,7 @@ public class HelpCommand extends BaseCommand
             public void printGropCommandsHelp(CommandSender sender, String[] gropArgs)
             {
                 sender.sendMessage("§e---------§f 礼物盒子帮助: 别名 §e--------------------");
-                for(BaseCommand command : GifBox.instance.commandReceiver.getCommands())
+                for(BaseCommand command : GiftBox.instance.commandReceiver.getCommands())
                 {
                     for(String alias : command.aliases)
                     {
@@ -36,7 +36,7 @@ public class HelpCommand extends BaseCommand
     {
         if(args.length == 0)
         {
-            ArrayList<BaseCommand> commands = GifBox.instance.commandReceiver.getCommands();
+            ArrayList<BaseCommand> commands = GiftBox.instance.commandReceiver.getCommands();
             sender.sendMessage("§e---------§f 礼物盒子帮助: 索引 §e--------------------");
             for(CommandGrop commandGrop : commandGrops)
             {
@@ -58,7 +58,7 @@ public class HelpCommand extends BaseCommand
             }
             else
             {
-                BaseCommand command = GifBox.instance.commandReceiver.getCommand(args[0]);
+                BaseCommand command = GiftBox.instance.commandReceiver.getCommand(args[0]);
                 if(command != null)
                 {
                     if(command.isAlias(args[0]))
@@ -101,7 +101,7 @@ public class HelpCommand extends BaseCommand
         else if(args.length == 1)
         {
             ArrayList<String> matchedCommand = new ArrayList<String>();
-            for(BaseCommand command : GifBox.instance.commandReceiver.getCommands())
+            for(BaseCommand command : GiftBox.instance.commandReceiver.getCommands())
             {
                 if(command.commandName.startsWith(args[0].toLowerCase()))
                 {
@@ -170,7 +170,7 @@ public class HelpCommand extends BaseCommand
                 sender.sendMessage("§6" + commandName + ":§f " + commandGrop.gropDescription);
             }
         }
-        for(BaseCommand command : GifBox.instance.commandReceiver.getCommands())
+        for(BaseCommand command : GiftBox.instance.commandReceiver.getCommands())
         {
             String commandName = command.commandName;
             

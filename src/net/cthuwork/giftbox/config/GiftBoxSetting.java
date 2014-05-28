@@ -1,4 +1,4 @@
-package net.cthuwork.gifbox.config;
+﻿package net.cthuwork.giftbox.config;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,40 +11,37 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 
-import net.cthuwork.gifbox.GifBox;
-import net.cthuwork.gifbox.config.PluginSetting;
-import net.cthuwork.gifbox.core.DropData;
-import net.cthuwork.gifbox.core.dropdata.ExpDropData;
-import net.cthuwork.gifbox.core.dropdata.ItemStackDropData;
+import net.cthuwork.giftbox.GiftBox;
+import net.cthuwork.giftbox.config.PluginSetting;
+import net.cthuwork.giftbox.core.DropData;
+import net.cthuwork.giftbox.core.dropdata.ExpDropData;
+import net.cthuwork.giftbox.core.dropdata.ItemStackDropData;
 
-public class GifBoxSetting extends PluginSetting
+public class GiftBoxSetting extends PluginSetting
 {
     public ConfigurationSection commandSetting;
-    public ConfigurationSection gifBoxData;
-    public ConfigurationSection gifBox;
+    public ConfigurationSection giftBoxData;
+    public ConfigurationSection giftBox;
     
-    public boolean customDropSystem = false;
-    
-    public GifBoxSetting(FileConfiguration config)
+    public GiftBoxSetting(FileConfiguration config)
     {
         super(config);
-        customDropSystem = config.getBoolean("isCustomEntityDrop");
-        gifBoxData = config.getConfigurationSection("gifBox.gifBoxData");
-        gifBox = config.getConfigurationSection("gifBox.gifBox");
-        commandSetting = config.getConfigurationSection("gifBox.commandSetting");
+        giftBoxData = config.getConfigurationSection("giftBox.giftBoxData");
+        giftBox = config.getConfigurationSection("giftBox.giftBox");
+        commandSetting = config.getConfigurationSection("giftBox.commandSetting");
     }
     
     @SuppressWarnings("unused")
     public List<DropData> getRandomDropFromItemStack(ItemStack itemstack)
     {
         ConfigurationSection boxSetting = null;
-        if (!(gifBox.isConfigurationSection(itemstack.getType().toString())))
+        if (!(giftBox.isConfigurationSection(itemstack.getType().toString())))
         {
             return null;
         }
         else
         {
-            boxSetting = gifBox.getConfigurationSection(itemstack.getType().toString());
+            boxSetting = giftBox.getConfigurationSection(itemstack.getType().toString());
         }
         if (!boxSetting.isList("dropGroup"))
         {
@@ -77,7 +74,7 @@ public class GifBoxSetting extends PluginSetting
         {
             return null;
         }
-        int randomNumber = GifBox.instance.random.nextInt(sumProbability);
+        int randomNumber = GiftBox.instance.random.nextInt(sumProbability);
         int currentProbability = 0;
         for (Entry<ArrayList<?>, Integer> entry : dropGroupsMap.entrySet())
         {
@@ -105,7 +102,7 @@ public class GifBoxSetting extends PluginSetting
                 {
                     continue;
                 }
-                double randomPercent = GifBox.instance.random.nextDouble() * 100D;
+                double randomPercent = GiftBox.instance.random.nextDouble() * 100D;
                 if (randomPercent > percent)
                 {
                     continue;
@@ -140,11 +137,11 @@ public class GifBoxSetting extends PluginSetting
     public List<DropData> getGifBoxData(String itemKey)
     {
         ConfigurationSection boxDataSetting = null;
-        if (!(gifBoxData.isConfigurationSection(itemKey)))
+        if (!(giftBoxData.isConfigurationSection(itemKey)))
         {
             return null;
         }
-        boxDataSetting = gifBoxData.getConfigurationSection(itemKey);
+        boxDataSetting = giftBoxData.getConfigurationSection(itemKey);
         if (!boxDataSetting.isList("dropGroup"))
         {
             return null;
@@ -176,7 +173,7 @@ public class GifBoxSetting extends PluginSetting
         {
             return null;
         }
-        int randomNumber = GifBox.instance.random.nextInt(sumProbability);
+        int randomNumber = GiftBox.instance.random.nextInt(sumProbability);
         int currentProbability = 0;
         for (Entry<ArrayList<?>, Integer> entry : dropGroupsMap.entrySet())
         {
@@ -203,7 +200,7 @@ public class GifBoxSetting extends PluginSetting
                 {
                     continue;
                 }
-                double randomPercent = GifBox.instance.random.nextDouble() * 100D;
+                double randomPercent = GiftBox.instance.random.nextDouble() * 100D;
                 if (randomPercent > percent)
                 {
                     continue;
@@ -235,9 +232,9 @@ public class GifBoxSetting extends PluginSetting
     public boolean isGifBox(ItemStack itemstack)
     {
         ConfigurationSection boxSetting = null;
-        if (gifBox.isConfigurationSection(itemstack.getType().toString()))
+        if (giftBox.isConfigurationSection(itemstack.getType().toString()))
         {
-            boxSetting = gifBox.getConfigurationSection(itemstack.getType().toString());
+            boxSetting = giftBox.getConfigurationSection(itemstack.getType().toString());
             Object itemObj = boxSetting.get("item");
             if (itemObj instanceof ItemStack)
             {
@@ -251,11 +248,11 @@ public class GifBoxSetting extends PluginSetting
     @Override
     public void save()
     {
-        GifBox.instance.saveConfig();
+        GiftBox.instance.saveConfig();
     }
     public String getMainCommandUsage()
     {
-        return commandSetting.getString("usage", "/<GifBox|gb> [子命令]");
+        return commandSetting.getString("usage", "/<GiftBox|gb> [子命令]");
     }
     public String getMainCommandDescription()
     {
@@ -263,7 +260,7 @@ public class GifBoxSetting extends PluginSetting
     }
     public String getCommandUsage(String commandName)
     {
-        return commandSetting.getString(commandName + ".usage", "/<GifBox|gb> <" + commandName + "> [参数[ ...]]");
+        return commandSetting.getString(commandName + ".usage", "/<GiftBox|gb> <" + commandName + "> [参数[ ...]]");
     }
     public String getCommandDescription(String commandName)
     {

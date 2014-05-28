@@ -1,9 +1,9 @@
-package net.cthuwork.gifbox.listener;
+﻿package net.cthuwork.giftbox.listener;
 
 import java.util.List;
 
-import net.cthuwork.gifbox.GifBox;
-import net.cthuwork.gifbox.core.DropData;
+import net.cthuwork.giftbox.GiftBox;
+import net.cthuwork.giftbox.core.DropData;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -26,11 +26,11 @@ public class PlayerListener implements Listener
         {
             return;
         }
-        if(!GifBox.instance.setting.isGifBox(aPlayHandItemStack))
+        if(!GiftBox.instance.setting.isGifBox(aPlayHandItemStack))
         {
             return;
         }
-        List<DropData> dropList = GifBox.instance.setting.getRandomDropFromItemStack(aPlayHandItemStack);
+        List<DropData> dropList = GiftBox.instance.setting.getRandomDropFromItemStack(aPlayHandItemStack);
         if(dropList == null)
         {
             return;
