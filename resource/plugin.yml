@@ -6,7 +6,7 @@ main: net.cthuwork.giftbox.GiftBox
 
 commands:
   GiftBox:
-    aliases: GF
+    aliases: GB
 permissions:
   GiftBox.help:
     description: 允许使用GiftBox插件帮助命令
