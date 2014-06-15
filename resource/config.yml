@@ -1,14 +1,14 @@
 giftBox: 
   chestSetting: 
     IRON_BLOCK: 
-      chestKey: TEST
+      chestKey: TEST2
       dropGroup: 
       - drops:
         - itemKey: TEST
           percent: 100
         probability: 1
   chestDataSetting:
-    TEST:
+    TEST2:
       item:
         ==: org.bukkit.inventory.ItemStack
         type: IRON_BLOCK

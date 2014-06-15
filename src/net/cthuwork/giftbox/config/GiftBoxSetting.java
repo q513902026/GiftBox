@@ -29,7 +29,7 @@ public class GiftBoxSetting extends PluginSetting
         super(config);
         giftBoxDataSetting = config.getConfigurationSection("giftBox.dataSetting");
         giftBoxChestSetting = config.getConfigurationSection("giftBox.chestSetting");
-        giftBoxChestDataSetting = config.getConfigurationSection("gifBox.chestDataSetting");
+        giftBoxChestDataSetting = config.getConfigurationSection("giftBox.chestDataSetting");
         commandSetting = config.getConfigurationSection("giftBox.commandSetting");
     }
     @SuppressWarnings("unused")
@@ -111,7 +111,7 @@ public class GiftBoxSetting extends PluginSetting
                 Object dropDataKeyObj = dropData.get("itemKey");
                 if (!(dropDataKeyObj instanceof String))
                 {
-                    break;
+                    continue;
                 }
                 String dropDataKey = (String) dropDataKeyObj;
                 dropKeyList.add(dropDataKey);

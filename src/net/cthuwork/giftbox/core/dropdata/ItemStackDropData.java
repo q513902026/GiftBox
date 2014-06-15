@@ -6,8 +6,8 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-public class ItemStackDropData extends DropData {
-
+public class ItemStackDropData extends DropData
+{
     private ItemStack itemStack;
     
     public ItemStackDropData(ItemStack itemStack)
@@ -15,15 +15,29 @@ public class ItemStackDropData extends DropData {
         super(DropType.ITEM_STACK);
         this.itemStack = itemStack;
     }
-
     public ItemStack getItemStack()
     {
         return itemStack;
     }
-    
     @Override
     public void processDrop(Player player)
     {
-        player.getInventory().addItem(itemStack);
+        if (player.getInventory().getSize() == player.getInventory().getMaxStackSize())
+        {
+            player.getWorld().dropItem(player.getLocation(), itemStack);
+        }
+        else
+        {
+            player.getInventory().addItem(itemStack);
+            player.updateInventory();
+        }
+        if (itemStack.hasItemMeta())
+        {
+            player.sendMessage("[GiftBox]:恭喜你获得了" + itemStack.getItemMeta().getDisplayName() + itemStack.getAmount() + "件。");
+        }
+        else
+        {
+            player.sendMessage("[GiftBox]:恭喜你获得了" + itemStack.getType().toString() + itemStack.getAmount() + "件。");
+        }
     }
 }

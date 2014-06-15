@@ -27,6 +27,8 @@ public class ExpDropData extends DropData {
     {
         ExperienceOrb experienceOrb = (ExperienceOrb) player.getWorld().spawnEntity(player.getLocation(), EntityType.EXPERIENCE_ORB);
         experienceOrb.setExperience(exp);
+        player.sendMessage("[GiftBox]: 从礼盒中爆出了"+exp+"点经验值，请速度拾取.");
+        
     }
 
 }

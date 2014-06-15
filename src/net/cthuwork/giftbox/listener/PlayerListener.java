@@ -22,7 +22,7 @@ public class PlayerListener implements Listener
         final Player aPlayer = (Player) event.getPlayer();
         final Action aPlayerAction = (Action)event.getAction();
          ItemStack aPlayHandItemStack = aPlayer.getItemInHand();
-        if ((aPlayerAction != Action.RIGHT_CLICK_BLOCK) && (aPlayerAction != Action.RIGHT_CLICK_AIR))
+        if ((aPlayerAction != Action.RIGHT_CLICK_BLOCK))
         {
             return;
         }
@@ -30,6 +30,8 @@ public class PlayerListener implements Listener
         {
             return;
         }
+        event.setCancelled(true);
+        aPlayer.setItemInHand(new ItemStack(Material.AIR));
         List<DropData> dropList = GiftBox.instance.setting.getRandomDropFromItemStack(aPlayHandItemStack);
         if(dropList == null)
         {
@@ -39,8 +41,9 @@ public class PlayerListener implements Listener
         {
             drop.processDrop(aPlayer);
         }
-        aPlayHandItemStack.setType(Material.AIR);
-        event.setCancelled(true);
         
+        
+        
+                
     }
 }
