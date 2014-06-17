@@ -6,11 +6,11 @@ main: net.cthuwork.giftbox.GiftBox
 
 commands:
   GiftBox:
-    aliases: GB
+    aliases: gb
 permissions:
+  GiftBox.admin:
+    description: 允许使用GiftBox管理员命令
+    default: op
   GiftBox.help:
     description: 允许使用GiftBox插件帮助命令
     default: true
-  GiftBox.reload:
-    description: 允许重新加载配置文件
-    default: op

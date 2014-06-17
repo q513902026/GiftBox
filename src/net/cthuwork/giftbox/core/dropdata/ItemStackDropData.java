@@ -33,7 +33,14 @@ public class ItemStackDropData extends DropData
         }
         if (itemStack.hasItemMeta())
         {
-            player.sendMessage("[GiftBox]:恭喜你获得了" + itemStack.getItemMeta().getDisplayName() + itemStack.getAmount() + "件。");
+            if (itemStack.getItemMeta().hasDisplayName())
+            {
+                player.sendMessage("[GiftBox]:恭喜你获得了" + itemStack.getItemMeta().getDisplayName() + itemStack.getAmount() + "件。");
+            }
+            else
+            {
+                player.sendMessage("[GiftBox]:恭喜你获得了" + itemStack.getType().toString() + itemStack.getAmount() + "件。");
+            }
         }
         else
         {

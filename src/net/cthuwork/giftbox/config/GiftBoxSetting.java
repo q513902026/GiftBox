@@ -32,6 +32,31 @@ public class GiftBoxSetting extends PluginSetting
         giftBoxChestDataSetting = config.getConfigurationSection("giftBox.chestDataSetting");
         commandSetting = config.getConfigurationSection("giftBox.commandSetting");
     }
+    public List<String> getGiftKeys()
+    {
+        List<String> temp = new ArrayList<>();
+        List<Map<?,?>> tempMapList = config.getMapList("giftBox.chestSetting");
+        for(Map<?,?> tempMap : tempMapList)
+        {
+            for(Entry<?, ?> e :tempMap.entrySet())
+            {
+                Object tempObject = e.getValue();
+                if(!(tempObject instanceof Map))
+                {
+                    continue;
+                }
+                HashMap<?,?> tempHashMap = (HashMap)tempObject;
+                Object tempObject2 = tempHashMap.get("chestKey");
+                if(!(tempObject2 instanceof String))
+                {
+                    continue;
+                }
+                String tempString = (String) tempObject2;
+                temp.add(tempString);
+            }
+        }
+        return temp;
+    }
     @SuppressWarnings("unused")
     public List<DropData> getRandomDropFromItemStack(ItemStack itemstack)
     {
@@ -257,7 +282,7 @@ public class GiftBoxSetting extends PluginSetting
         }
         return false;
     }
-    private ItemStack getItemStackFromChestKey(String key)
+    public ItemStack getItemStackFromChestKey(String key)
     {
         ConfigurationSection chestKeySetting = null;
         if (!(giftBoxChestDataSetting.isConfigurationSection(key)))
@@ -301,4 +326,6 @@ public class GiftBoxSetting extends PluginSetting
     {
         return commandSetting.getString(commandName + ".permission-message", "");
     }
+
+
 }

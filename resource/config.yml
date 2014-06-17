@@ -28,13 +28,18 @@ giftBox:
   commandSetting: 
     usage: /<GiftBox|gb> <子命令>
     description: 使用此命令来操作礼物盒子插件
+    get:
+      usage: /<GiftBox|gb> <get|g> <chestKey>
+      description: 使用此命令来直接获取礼物盒子信息
+      permission: GiftBox.admin
+      permission-message: 你没有权限使用礼物盒子插件帮助命令
     help: 
       usage: /<GiftBox|gb> <help> [GifBox命令]
       description: 使用此命令来显示礼物盒子插件帮助信息
-      permission: giftBox.help
+      permission: GiftBox.help
       permission-message: 你没有权限使用礼物盒子插件帮助命令
     reload: 
       usage: /<GiftBox|gb> <reload>
       description: 使用此命令来重新加载配置文件
-      permission: giftBox.reload
+      permission: GiftBox.admin
       permission-message: 你没有权限重新加载配置文件
