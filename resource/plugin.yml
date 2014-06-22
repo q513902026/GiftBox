@@ -1,5 +1,5 @@
 name: GiftBox
-version: 1.0.0
+version: 1.2.5
 authors: [Cthuwork]
 
 main: net.cthuwork.giftbox.GiftBox

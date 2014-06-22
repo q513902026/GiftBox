@@ -35,7 +35,7 @@ public class GiftBoxSetting extends PluginSetting
     public List<String> getGiftKeys()
     {
         List<String> temp = new ArrayList<>();
-        List<Map<?,?>> tempMapList = config.getMapList("giftBox.chestSetting");
+        List<Map<?,?>> tempMapList = config.getMapList("giftBox.chestDataSetting");
         for(Map<?,?> tempMap : tempMapList)
         {
             for(Entry<?, ?> e :tempMap.entrySet())

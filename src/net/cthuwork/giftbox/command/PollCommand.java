@@ -2,25 +2,21 @@ package net.cthuwork.giftbox.command;
 
 import java.util.List;
 
-import net.cthuwork.giftbox.GiftBox;
-import net.cthuwork.giftbox.core.DropData;
-import net.cthuwork.giftbox.core.dropdata.ItemStackDropData;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
-public class GetCommand extends BaseCommand
+public class PollCommand extends BaseCommand
 {
-    public GetCommand()
+    public PollCommand()
     {
-        super("get", "g");
+        super("poll", "p");
+        // TODO 自动生成的构造函数存根
     }
     @Override
     public void runCommand(CommandSender sender, String caseSensitiveName, String[] args)
     {
-        if (args.length != 1)
+        if (args.length != 0)
         {
             PrintUsage(sender);
             return;
@@ -31,14 +27,7 @@ public class GetCommand extends BaseCommand
             return;
         }
         Player aPlayer = (Player) sender;
-        final String key = args[0];
-        if (!GiftBox.instance.setting.giftBoxChestDataSetting.contains(key))
-        {
-            aPlayer.sendMessage(ChatColor.RED + "[GiftBox|System]不存在的ChestKey值");
-            return;
-        }
-        DropData drop = new ItemStackDropData(GiftBox.instance.setting.getItemStackFromChestKey(key));
-        drop.processDrop(aPlayer);
+        aPlayer.sendMessage(ChatColor.RED + "[GiftBox|System] :" + aPlayer.getItemInHand().getType().toString());
     }
     @Override
     public List<String> tabComplete(CommandSender sender, String caseSensitiveName, String[] args)

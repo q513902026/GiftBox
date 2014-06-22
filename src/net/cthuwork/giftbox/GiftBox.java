@@ -5,6 +5,7 @@ import java.util.Random;
 import net.cthuwork.giftbox.command.CommandReceiver;
 import net.cthuwork.giftbox.command.GetCommand;
 import net.cthuwork.giftbox.command.HelpCommand;
+import net.cthuwork.giftbox.command.PollCommand;
 import net.cthuwork.giftbox.command.ReloadCommand;
 import net.cthuwork.giftbox.config.GiftBoxSetting;
 import net.cthuwork.giftbox.listener.PlayerListener;
@@ -46,6 +47,7 @@ public class GiftBox extends JavaPlugin
         commandReceiver.registerCommand(new HelpCommand());
         commandReceiver.registerCommand(new ReloadCommand());
         commandReceiver.registerCommand(new GetCommand());
+        commandReceiver.registerCommand(new PollCommand());
         
         this.getServer().getPluginManager().registerEvents(playListener, this);
     }
